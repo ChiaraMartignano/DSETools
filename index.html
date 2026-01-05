@@ -1,51 +1,173 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Browse the Catalogue
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./overview.html">Overview</a></li>
-            <li><a class="dropdown-item" href="./list.html">Full List</a></li>
-            <li><a class="dropdown-item" href="./editions">Browse by Digital Edition</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Contribute
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./tool-form.html">Add a new Tool</a></li>
-            <li><a class="dropdown-item" href="./edition-form.html">Add a new Edition</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Airtable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 font-sans h-screen">
+
+    <nav class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center h-16">
+                
+                <div class="font-bold text-xl mr-8">DSETools</div>
+
+                <ul class="flex space-x-6 items-center">
+                    
+                    <li>
+                        <button onclick="showSection('home')" class="hover:text-blue-200 transition">Home</button>
+                    </li>
+
+                    <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="flex items-center hover:text-blue-200 transition py-4">
+                            Browse the Catalogue
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <ul x-show="open" x-transition class="absolute left-0 w-56 bg-white text-gray-800 rounded-md shadow-xl py-2 z-50">
+                            <li><button onclick="showSection('overview')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Overview</button></li>
+                            <li><button onclick="showSection('list')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Full List</button></li>
+                            <li><button onclick="showSection('editions')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Browse by Digital Edition</button></li>
+                        </ul>
+                    </li>
+
+                    <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="flex items-center hover:text-blue-200 transition py-4">
+                            Contribute
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <ul x-show="open" x-transition class="absolute left-0 w-56 bg-white text-gray-800 rounded-md shadow-xl py-2 z-50">
+                            <li><button onclick="showSection('tool-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Tool</button></li>
+                            <li><button onclick="showSection('edition-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Edition</button></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<main class="flex-grow container mx-auto p-6">
+    <div id="content-area" class="w-full h-full bg-white rounded-xl shadow-md border border-gray-200">
+           
+            <div id="home" class="p-10 section-content h-full overflow-auto">
+                <div class="max-w-6xl mx-auto px-4 py-8 text-left">
+    
+    <header class="mb-12">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Welcome to DSETools,<br/> the Catalogue of Software Tools for Digital Scholarly Editing!</h1>
+        <div class="space-y-4 text-gray-700 leading-relaxed text-sm">
+            <p>What started as an appendix to my PhD Thesis and was later published on Zenodo as an Excel spreadsheet has now become a digital resource in its own right. Given how precious and difficult the information in this catalogue is to retrieve, I hope it helps my fellow researchers to find useful tools with which to implement more efficient digital editorial workflows.</p>
+            <p>The Catalogue is currently under active development. For this reason, the information may still be incomplete or uncorrect. As soon as the work is complete, I will release a new official version of the catalogue on Zenodo. Please help me to perfect and grow this resource by providing your feedback as illustrated below.</p>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="md:col-span-2 space-y-10">
+            
+            <section>
+                <h3 class="text-lg font-bold mb-4 tracking-wide text-gray-800">Browse the catalogue</h3>
+                <div class="space-y-4">
+                    <div onclick="showSection('list')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 hover:shadow-md transition cursor-pointer bg-white">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Full List</h4>
+                            <p class="text-sm text-gray-500">All the software tools you need, with all the information you require!</p>
+                        </div>
+                        <div class="bg-cyan-400 text-white p-2 rounded-full group-hover:bg-cyan-500 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                    <div onclick="showSection('overview')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 hover:shadow-md transition cursor-pointer bg-white">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Overview</h4>
+                            <p class="text-sm text-gray-500">Take a quick look at the tools included in the catalogue!</p>
+                        </div>
+                        <div class="bg-cyan-400 text-white p-2 rounded-full group-hover:bg-cyan-500 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="text-lg font-bold mb-4 tracking-wide text-gray-800">Contribute to the catalogue</h3>
+                <p class="text-sm text-gray-600 mb-4">If you wish to contribute or discuss new additions, please feel free to contact me at chiaramartignano[at]gmail[dot]com.</p>
+                <div class="space-y-4">
+                    <div onclick="showSection('tool-form')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 cursor-pointer bg-white">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-cyan-600">Add a New Tool!</h4>
+                            <p class="text-sm text-gray-500">Help me include tools from all over the world.</p>
+                        </div>
+                        <div class="bg-cyan-400 text-white p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+                    </div>
+                    <div onclick="showSection('edition-form')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 cursor-pointer bg-white">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-cyan-600">Add a New Edition!</h4>
+                            <p class="text-sm text-gray-500">Help the scholarly editing community to find concrete examples of how the listed software tools can be used, and the results that can be achieved.</p>
+                        </div>
+                        <div class="bg-cyan-400 text-white p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="space-y-6">
+            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                <h4 class="font-bold text-blue-900 mb-3">How to cite</h4>
+                <p class="text-xs text-blue-800 leading-relaxed mb-4">Chiara Martignano. «Catalogue of Tools for Digital Scholarly Editing». Zenodo, 2 ottobre 2023. <a href="https://doi.org/10.5281/zenodo.8398700" target="_blank" class="underline">https://doi.org/10.5281/zenodo.8398700</a></p>
+                
+                <hr class="border-blue-200 my-4">
+                
+                <h4 class="font-bold text-blue-900 mb-3 text-sm">Download the data</h4>
+                <ul class="text-xs space-y-2">
+                    <!-- <li><a href="#" class="flex items-center text-blue-700 hover:underline"><svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> Version 2.0</a></li> -->
+                    <li><a href="https://doi.org/10.5281/zenodo.8398699" target="_blank" class="flex items-center text-blue-700 hover:underline"><svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> Version 1.0</a></li>
+                </ul>
+            </div>
+        </div>
+
     </div>
-  </div>
-</nav>
-    </body>
+
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+        <h3 class="text-lg font-bold mb-4 text-gray-800">References</h3>
+        <ul class="text-xs text-gray-600 space-y-3 list-disc pl-5">
+            <li>Martignano, Chiara. 2025. “A Catalogue of Software Tools for Digital Scholarly Editing”. <em>Umanistica Digitale</em> 9 (19):1-15. <a href="https://doi.org/10.6092/issn.2532-8816/21093" target="_blank">https://doi.org/10.6092/issn.2532-8816/21093</a>.</li>
+            <li>Martignano, Chiara. 2023. ‘On Why and How We Should Build a Catalogue of Software Products for Digital Scholarly Editing’. In <em>Memoria Digitale: Forme Del Testo e Organizzazione Della Conoscenza. Atti Del XII Convegno Annuale AIUCD.</em> (Siena), 130–33. <a href="https://doi.org/10.6092/unibo%2Famsacta%2F7721" target="_blank">https://doi.org/10.6092/unibo%2Famsacta%2F7721</a>.</li>
+            <li>Martignano, Chiara, Giorgia Rubin, Sebastiano Giacomini, Alessia Bardi, Marina Buzzoni, Marilena Daquino, Riccardo Del Gratta, Chiara Martignano et al. ‘ATLAS: A Data Model for Describing FAIR Digital Humanities Research Outcomes’. In <em>Diversità, Equità e Inclusione: Sfide e Opportunità per l’Informatica Umanistica Nell’Era Dell’Intelligenza Artificiale.</em> Verona: AIUCD, 2025. <a href="https://doi.org/10.6092/unibo/amsacta/8380" target="_blank">https://doi.org/10.6092/unibo/amsacta/8380</a>.</li>
+            <li>Martignano, Chiara, Alessia Bardi, Marina Buzzoni, Marilena Daquino, RICCARDO DEL GRATTA, ANGELO MARIO DEL GROSSO, Franz Fischer, et al. «DH ATLAS: White Book V1.2». Zenodo, 25 febbraio 2025. <a href="https://doi.org/10.5281/zenodo.14925266" target="_blank">https://doi.org/10.5281/zenodo.14925266</a>.</li>
+        </ul>
+    </footer>
+</div>
+</div>
+            
+            <iframe id="tool-form" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/pagcdlFiydMXlTWND/form" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+            <iframe id="edition-form" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/pagUoxQ3kchPiGqu6/form" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+            <iframe id="editions" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrVo2qJoYr6CRrm8?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+            <iframe id="list" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrKIbxTh4y6ygCyx?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+            <iframe id="overview" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrZHt402No0cuB55?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 text-gray-600 p-6 border-t">
+        <div class="container mx-auto text-center text-sm">
+            © 2026 - <a href="https://chiaramartignano.github.io/presentation/" target="_blank">Chiara Martignano</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | Built with Airtable and Tailwind CSS
+        </div>
+    </footer>
+
+    <script>
+        function showSection(id) {
+            // Nasconde tutte le sezioni
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(s => s.classList.add('hidden'));
+
+            // Mostra la sezione selezionata
+            const activeSection = document.getElementById(id);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+            }
+        }
+    </script>
+
+</body>
 </html>
