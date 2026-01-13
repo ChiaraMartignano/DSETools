@@ -10,7 +10,7 @@
 </head>
 <body class="flex flex-col min-h-screen bg-gray-50 font-sans h-screen">
 
-    <nav class="bg-blue-800 text-white shadow-lg">
+    <nav class="bg-cyan-800 text-white shadow-lg">
         <div class="container mx-auto px-4">
             <div class="flex items-center h-16">
                 
@@ -44,6 +44,10 @@
                             <li><button onclick="showSection('edition-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Edition</button></li>
                         </ul>
                     </li>
+
+                    <li>
+                        <button onclick="showSection('documentation')" class="hover:text-blue-200 transition">Documentation</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -56,10 +60,6 @@
     
     <header class="mb-12">
         <h1 class="text-3xl font-bold text-gray-900 mb-4">Welcome to DSETools,<br/> the Catalogue of Software Tools for Digital Scholarly Editing!</h1>
-        <div class="space-y-4 text-gray-700 leading-relaxed text-sm">
-            <p>What started as an appendix to my PhD Thesis and was later published on Zenodo as an Excel spreadsheet has now become a digital resource in its own right. Given how precious and difficult the information in this catalogue is to retrieve, I hope it helps my fellow researchers to find useful tools with which to implement more efficient digital editorial workflows.</p>
-            <p>The catalogue is currently under active development. For this reason, some of the information may be incomplete or incorrect. As soon as the work is complete, a new official version of the catalogue will be released on Zenodo. In the meantime, please help me to improve and expand this resource by providing your feedback as illustrated below.</p>
-        </div>
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -67,12 +67,12 @@
         <div class="md:col-span-2 space-y-10">
             
             <section>
-                <h3 class="text-lg font-bold mb-4 tracking-wide text-gray-800">Browse the catalogue</h3>
+                <h3 class="text-lg font-bold mb-4 tracking-wide text-black-800">Browse the catalogue</h3>
                 <div class="space-y-4">
                     <div onclick="showSection('list')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 hover:shadow-md transition cursor-pointer bg-white">
                         <div>
-                            <h4 class="font-bold text-gray-900">Full List</h4>
-                            <p class="text-sm text-gray-500">All the software tools you need, with all the information you require!</p>
+                            <h4 class="font-bold text-cyan-600">Full List</h4>
+                            <p class=" text-black-500">All the software tools you need, with all the information you require</p>
                         </div>
                         <div class="bg-cyan-400 text-white p-2 rounded-full group-hover:bg-cyan-500 transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -80,8 +80,8 @@
                     </div>
                     <div onclick="showSection('overview')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 hover:shadow-md transition cursor-pointer bg-white">
                         <div>
-                            <h4 class="font-bold text-gray-900">Overview</h4>
-                            <p class="text-sm text-gray-500">Take a quick look at the tools included in the catalogue!</p>
+                            <h4 class="font-bold text-cyan-600">Overview</h4>
+                            <p class=" text-black-500">Take a quick look at the tools included in the catalogue</p>
                         </div>
                         <div class="bg-cyan-400 text-white p-2 rounded-full group-hover:bg-cyan-500 transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -91,20 +91,19 @@
             </section>
 
             <section>
-                <h3 class="text-lg font-bold mb-4 tracking-wide text-gray-800">Contribute to the catalogue</h3>
-                <p class="text-sm text-gray-600 mb-4">If you wish to contribute or discuss new additions, please feel free to contact me at chiaramartignano[at]gmail[dot]com.</p>
+                <h3 class="text-lg font-bold mb-4 tracking-wide text-black-800">Contribute to the catalogue</h3>
                 <div class="space-y-4">
                     <div onclick="showSection('tool-form')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 cursor-pointer bg-white">
                         <div>
-                            <h4 class="font-bold text-gray-900 text-cyan-600">Add a New Tool!</h4>
-                            <p class="text-sm text-gray-500">Help me include tools from all over the world.</p>
+                            <h4 class="font-bold text-black-900 text-cyan-600">Add a new Tool</h4>
+                            <p class=" text-black-500">Help me include tools from all over the world</p>
                         </div>
                         <div class="bg-cyan-400 text-white p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     </div>
                     <div onclick="showSection('edition-form')" class="group flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-cyan-400 cursor-pointer bg-white">
                         <div>
-                            <h4 class="font-bold text-gray-900 text-cyan-600">Add a New Edition!</h4>
-                            <p class="text-sm text-gray-500">Help the scholarly editing community to find concrete examples of how the listed software tools can be used, and the results that can be achieved.</p>
+                            <h4 class="font-bold text-black-900 text-cyan-600">Add a new Edition</h4>
+                            <p class=" text-black-500">Help the scholarly editing community to find concrete examples of how the listed software tools can be used, and the results that can be achieved</p>
                         </div>
                         <div class="bg-cyan-400 text-white p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     </div>
@@ -113,45 +112,197 @@
         </div>
 
         <div class="space-y-6">
-            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                <h4 class="font-bold text-blue-900 mb-3">How to cite</h4>
-                <p class="text-xs text-blue-800 leading-relaxed mb-4">Chiara Martignano. «Catalogue of Tools for Digital Scholarly Editing». Zenodo, 2 ottobre 2023. <a href="https://doi.org/10.5281/zenodo.8398700" target="_blank" class="underline">https://doi.org/10.5281/zenodo.8398700</a></p>
+            <div class="bg-cyan-50 p-6 rounded-2xl border border-cyan-100">
+                <h4 class="font-bold text-cyan-900 mb-3">How to cite</h4>
+                <p class="text-cyan-800 leading-relaxed mb-4">Chiara Martignano. «Catalogue of Tools for Digital Scholarly Editing». Zenodo, 2 ottobre 2023. <a href="https://doi.org/10.5281/zenodo.8398700" target="_blank" class="underline">https://doi.org/10.5281/zenodo.8398700</a></p>
                 
-                <hr class="border-blue-200 my-4">
+                <hr class="border-cyan-200 my-4">
                 
-                <h4 class="font-bold text-blue-900 mb-3 text-sm">Download the data</h4>
-                <ul class="text-xs space-y-2">
-                    <!-- <li><a href="#" class="flex items-center text-blue-700 hover:underline"><svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> Version 2.0</a></li> -->
-                    <li><a href="https://doi.org/10.5281/zenodo.8398699" target="_blank" class="flex items-center text-blue-700 hover:underline"><svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> Version 1.0</a></li>
+                <h4 class="font-bold text-cyan-900 mb-3 ">Download the data</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://doi.org/10.5281/zenodo.18211572" target="_blank" class="flex items-center text-cyan-700 hover:underline"><svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> Version 2.0</a></li>
+                    <li><a href="https://doi.org/10.5281/zenodo.8398699" target="_blank" class="flex items-center text-cyan-700 hover:underline"><svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> Version 1.0</a></li>
                 </ul>
             </div>
         </div>
 
     </div>
-
-    <footer class="mt-16 pt-8 border-t border-gray-200">
-        <h3 class="text-lg font-bold mb-4 text-gray-800">References</h3>
-        <ul class="text-xs text-gray-600 space-y-3 list-disc pl-5">
-            <li>Martignano, Chiara. 2025. “A Catalogue of Software Tools for Digital Scholarly Editing”. <em>Umanistica Digitale</em> 9 (19):1-15. <a href="https://doi.org/10.6092/issn.2532-8816/21093" target="_blank">https://doi.org/10.6092/issn.2532-8816/21093</a>.</li>
-            <li>Martignano, Chiara. 2023. ‘On Why and How We Should Build a Catalogue of Software Products for Digital Scholarly Editing’. In <em>Memoria Digitale: Forme Del Testo e Organizzazione Della Conoscenza. Atti Del XII Convegno Annuale AIUCD.</em> (Siena), 130–33. <a href="https://doi.org/10.6092/unibo%2Famsacta%2F7721" target="_blank">https://doi.org/10.6092/unibo%2Famsacta%2F7721</a>.</li>
-            <li>Martignano, Chiara, Giorgia Rubin, Sebastiano Giacomini, Alessia Bardi, Marina Buzzoni, Marilena Daquino, Riccardo Del Gratta, Chiara Martignano et al. ‘ATLAS: A Data Model for Describing FAIR Digital Humanities Research Outcomes’. In <em>Diversità, Equità e Inclusione: Sfide e Opportunità per l’Informatica Umanistica Nell’Era Dell’Intelligenza Artificiale.</em> Verona: AIUCD, 2025. <a href="https://doi.org/10.6092/unibo/amsacta/8380" target="_blank">https://doi.org/10.6092/unibo/amsacta/8380</a>.</li>
-            <li>Martignano, Chiara, Alessia Bardi, Marina Buzzoni, Marilena Daquino, RICCARDO DEL GRATTA, ANGELO MARIO DEL GROSSO, Franz Fischer, et al. «DH ATLAS: White Book V1.2». Zenodo, 25 febbraio 2025. <a href="https://doi.org/10.5281/zenodo.14925266" target="_blank">https://doi.org/10.5281/zenodo.14925266</a>.</li>
-        </ul>
-    </footer>
-</div>
-</div>
+        </div>
+        </div>
             
             <iframe id="tool-form" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/pagcdlFiydMXlTWND/form" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
             <iframe id="edition-form" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/pagUoxQ3kchPiGqu6/form" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
             <iframe id="editions" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrVo2qJoYr6CRrm8?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
             <iframe id="list" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrKIbxTh4y6ygCyx?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
             <iframe id="overview" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrZHt402No0cuB55?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+
+
+        <div id="documentation" class="hidden p-10 section-content h-full overflow-auto">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
+        
+        <aside class="md:w-1/4">
+            <div class="sticky top-6">
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-4 tracking-widest">Contents</h3>
+                <ul class="space-y-3 text-gray-700 border-l-2 border-gray-100 pl-4 ">
+                    <li><a href="#about" class="hover:text-cyan-600 transition block">About the Project</a></li>
+                    <li><a href="#structure" class="hover:text-cyan-600 transition block">Database Structure</a></li>
+                    <li><a href="#criteria" class="hover:text-cyan-600 transition block">Selection Criteria</a></li>
+                    <li><a href="#contribute" class="hover:text-cyan-600 transition block">How to Contribute</a></li>
+                    <li><a href="#references" class="hover:text-cyan-600 transition block">References</a></li>
+                    <li><a href="#acknowledgements" class="hover:text-cyan-600 transition block">Acknowledgements</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <article class="md:w-3/4 max-w-none text-gray-800">
+            <h1 class="text-4xl font-bold mb-6 text-gray-900" id="about">Documentation</h1>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">The DSETools Project</h2>
+                <p class="leading-relaxed mb-4">
+                    This documentation provides the methodological details underlying the <strong>Catalogue of Software Tools for Digital Scholarly Editing</strong>. 
+                    The database was designed to map the ecosystem of software tools used within the field of digital philology and scholarly editing.
+                </p>
+                <p class="leading-relaxed mb-4">
+                    The primary goal is to provide researchers with a structured entry point to discover tools that can be integrated into different stages of an editorial workflow.
+                </p>
+                <p class="leading-relaxed mb-4">
+                    This catalogue was conceived as an appendix to my PhD thesis (<a class="text-cyan-600" target="_blank" href="http://dx.doi.org/10.25434/chiara-martignano_phd2023">http://dx.doi.org/10.25434/chiara-martignano_phd2023</a>),
+                    and was later published on Zenodo as an Excel spreadsheet.
+                    This second version of the catalogue is the result of completely refactoring the data model behind it,
+                    following the research I conducted within the PRIN 2022 ATLAS project (<a class="text-cyan-600" href="https://dh-atlas.github.io/" target="_blank">https://dh-atlas.github.io/</a>).
+                    The second version's data model is compliant with the ATLAS ontology (<a class="text-cyan-600" href="https://dh-atlas.github.io/deliverables/ontology/2.0/index-en" target="_blank">https://dh-atlas.github.io/deliverables/ontology/2.0/index-en</a>)
+                    and enables in-depth description of the software tools according to the FAIR principles (<a class="text-cyan-600" href="https://doi.org/10.1038/sdata.2016.18" target="_blank">https://doi.org/10.1038/sdata.2016.18</a>
+            </section>
+
+            <section class="mb-10" id="structure">
+                <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">Database Structure</h2>
+                <p class="mb-4 ">Each record in the Airtable database is classified according to the following macro-categories:</p>
+                <ul class="list-disc pl-6 space-y-3 ">
+                    <li>
+                        <strong>Name:</strong> the name of the tool.
+                    </li>
+<li>
+<strong>Landing page:</strong> the URL of the official website, repository, or wiki that the creators of the tool offer as a showcase to learn about the tool.
+</li><li>
+<strong>Description:</strong> a brief description of the tool, detailing its main features and system requirements.
+</li><li>
+<strong>Category:</strong> one of the three macro-categories identified during the creation of the catalogue: 'Visualization', tools intended exclusively for the visualization (or publication) of a DSE; 'Mixed', tools that can be used for both processing and publishing a DSE; and finally, 'Production', tools that can replace or complement the philologist in a particular phase of the editorial process. The distinction between the proposed categories is not always clear-cut; tools have generally been categorized based on their main functionalities and the type of output or result they allow to obtain. A tool is categorized as either for visualization or mixed when it allows the production of a result that can be defined as a digital scholarly edition.
+</li><li>
+<strong>Research activities:</strong> one or more of the activities listed in the TaDiRAH taxonomy that best describe the main functionalities of the tools.
+</li><li>
+<strong>Status:</strong> describes the current status of the software tool. Possible values are: 'Completed', the tool is considered to be complete, as there will be no major modifications in the future; 'Deprecated', it is recommended to no longer use the tool; 'Under development'; 'Discontinued', the tool is no longer updated; 'Withdrawn', the tool is no longer maintained.
+</li><li>
+<strong>Access rights:</strong> describes how users can access the tool. Possible values are: 'Open access', the tool is immediately and permanently online, and free for all on the Web, without financial and technical barriers; 'Restricted access', the tool is available in a system but with some type of restriction for full open access, for example: the user must log-in to the system or must send an email to the system administrator; 'Metadata only access', only the metadata about the tool are availble; 'Embargoed access', the tool is metadata only access until released for open access on a certain date.
+</li><li>
+<strong>Current version:</strong> the number of the latest version of the tool, formatted according to existing standards such as semantic versionig (e.g., 1.0.0).
+</li><li>
+<strong>Release date:</strong> the release date of the version listed above. Wehen only the year is available the date is set on January first of that year. Respectively, when only the year and month are available, the date is set on the first day of the month.
+</li><li>
+<strong>License:</strong> the shortened name of the license under which the tool is available (e.g., GPL-3.0 instead of GNU General Public License version 3).
+</li><li>
+<strong>Creator:</strong> the name of the creator or creators of the tool. In the case of commercial software, the name of the company that produced it is provided. Similarly, if the tool was produced by a research center, a collective, or another type of group with an official name, the group’s name is provided. If the tool was created by one or more scholars, their respective names and affiliations are indicated.
+</li><li>
+<strong>Contributor:</strong> the full name of the people or organizations who contributed to the creation of the tool.
+</li><li>
+<strong>Publisher:</strong> the names of the organization that funded the development of the tool. These can be universities, research centers, cultural institutions, public projects, and funds. Since many of these funds are time-limited, I chose to include this information as it helps understand how stable a tool is in terms of development, maintenance, and user support.
+</li><li>
+<strong>Research project:</strong> the name of the research project in which the tool is developed.
+</li><li>
+<strong>Access Point:</strong> the URL to access the tool online.
+</li><li>
+<strong>Download:</strong> the URL to download the tool.
+</li><li>
+<strong>Documentation:</strong> the URL to the tool's documentation.
+</li><li>
+<strong>Input format:</strong> the various formats accepted by the tool as input. In some cases, it is not possible to obtain exact formats, as official sources indicate “text” or “image” generically. In these cases, the most commonly used formats, which are likely supported, are listed: TXT for text and JPEG for images.
+</li><li>
+<strong>Output format:</strong> the output formats in which the tool allows exporting the DSE or other types of data. It should be noted that some tools, especially among mixed or visualization-only ones, do not provide data export.
+</li><li>
+<strong>Programming language:</strong> languages used to develop the tool.
+</li><li>
+<strong>Research product reuse:</strong> other research products used to develop the tool.
+</li><li>
+<strong>Based on:</strong> tools, libraries, and frameworks used to develop the tool. Some of the listed tools have been integrated into other tools (for example, OpenSeadragon and VisColl have been integrated into EVT).
+</li><li>
+<strong>Collaborative working:</strong> indicates whether the tool is designed for collaborative work, allowing multiple users to work simultaneously on the same materials.
+</li><li>
+<strong>Code repository URL:</strong> the URL of the repository where the source code of the tool is stored.
+</li><li>
+<strong>Tool language:</strong> the language(s) used within the tool’s user interface, documentation and website.
+</li><li>
+<strong>Supported language:</strong> the language(s) supported by the tool. This piece of information is particularly valuable for automatic transcription and collation tools, lemmatisers and other types of computational tools for linguistic analysis.
+</li><li>
+<strong>Note on software tool:</strong> in this field, various pieces of information are entered, such as the type of tool (e.g. desktop software, web-based service, library or web-based application), its system requirements, its relationship with other tools, and the availability of any missing information.
+</li><li>
+<strong>Editions:</strong> the names of DSEs that have been created using the tool. This field is very useful as it allows to see concretely how a DSE is presented thanks to the tool and/or what scientific results the tool enables.
+</li><li>
+<strong>Bibliographic references:</strong> bibliographic references to publications in which the creators present their tool or other scholars review or report their experience using the software with a concrete use case.
+</li><li>
+<strong>Identifier:</strong> a permanent unique identifier of the tool, such as a DOI or Handle.
+</li><li>
+<strong>Record contributor:</strong> the full name of the person who contributed to entering the tool’s information.
+</li><li>
+<strong>Last updated:</strong> the date and time the tool entry was last updated.
+</li>
+                </ul>
+            </section>
+
+            <section class="mb-10" id="criteria">
+                <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">Selection Criteria</h2>
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-cyan-400 italic  text-gray-700">
+                    This catalougue  includes both software tools specifically  designed  for  digital  scholarly editing tasks recognised by the academic community, such as transcribing, collating, publishing, analysing, etc., and general-purpose
+                    tools  that,  while  not specifically  designed  for  textual  criticism,  have  proven  to  be  highly  effective  and  have  been widely adopted by the scholarly community.
+                </div>
+                <p class="mb-4 mt-4">
+                    It was not possible to provide all the above-listed information for many tools, either because it was not available in official sources (primarily websites and repositories), or because updated and reliable bibliographic sources could not be identified. The omission of information does not imply that it cannot be obtained through further in-depth study or by contacting the creators themselves. Furthermore, the information may no longer be up to date or valid; for instance, hyperlinks to websites may be inactive.
+                </p>
+                <p class="mb-4">
+                    This catalogue is not exhaustive as it mainly includes tools produced in Italy, Europe and the United States.
+                </p>
+            </section>
+
+            <section class="mb-10" id="contribute">
+                <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">How to Contribute</h2>
+                <p class="mb-4">
+                    The catalogue is a community-driven resource. If you are a developer, a researcher, or a user, you can suggest new additions or report inaccuracies.
+                </p>
+                <p class=" text-black-600 mb-4">Feel free to contact me at chiaramartignano[at]gmail[dot]com.</p>
+                <div class="flex gap-4">
+                    <button onclick="showSection('tool-form')" class="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition  font-medium">
+                        Submit a New Tool
+                    </button>
+                    <button onclick="showSection('edition-form')" class="border border-cyan-600 text-cyan-600 px-4 py-2 rounded-lg hover:bg-cyan-50 transition  font-medium">
+                        Add a Digital Edition
+                    </button>
+                </div>
+            </section>
+
+            <section class="mb-10" id="references">
+                <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">References</h2>
+                <ul class="space-y-3 list-disc pl-5">
+                    <li>Martignano, Chiara. 2025. “A Catalogue of Software Tools for Digital Scholarly Editing”. <em>Umanistica Digitale</em> 9 (19):1-15. <a class="text-cyan-600" href="https://doi.org/10.6092/issn.2532-8816/21093" target="_blank">https://doi.org/10.6092/issn.2532-8816/21093</a>.</li>
+                    <li>Martignano, Chiara. 2023. ‘On Why and How We Should Build a Catalogue of Software Products for Digital Scholarly Editing’. In <em>Memoria Digitale: Forme Del Testo e Organizzazione Della Conoscenza. Atti Del XII Convegno Annuale AIUCD.</em> (Siena), 130–33. <a class="text-cyan-600" href="https://doi.org/10.6092/unibo%2Famsacta%2F7721" target="_blank">https://doi.org/10.6092/unibo%2Famsacta%2F7721</a>.</li>
+                    <li>Martignano, Chiara, Giorgia Rubin, Sebastiano Giacomini, Alessia Bardi, Marina Buzzoni, Marilena Daquino, Riccardo Del Gratta, Chiara Martignano et al. ‘ATLAS: A Data Model for Describing FAIR Digital Humanities Research Outcomes’. In <em>Diversità, Equità e Inclusione: Sfide e Opportunità per l’Informatica Umanistica Nell’Era Dell’Intelligenza Artificiale.</em> Verona: AIUCD, 2025. <a class="text-cyan-600" href="https://doi.org/10.6092/unibo/amsacta/8380" target="_blank">https://doi.org/10.6092/unibo/amsacta/8380</a>.</li>
+                    <li>Martignano, Chiara, Alessia Bardi, Marina Buzzoni, Marilena Daquino, RICCARDO DEL GRATTA, ANGELO MARIO DEL GROSSO, Franz Fischer, et al. «DH ATLAS: White Book V1.2». Zenodo, 25 febbraio 2025. <a class="text-cyan-600" href="https://doi.org/10.5281/zenodo.14925266" target="_blank">https://doi.org/10.5281/zenodo.14925266</a>.</li>
+                </ul>
+            </section>
+
+            <section class="mb-10" id="ackowledgements">
+                <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">Acknowledgements</h2>
+                <p class="mb-4">I would like to thank the ATLAS project team, especially Sebastiano Giacomini and Giorgia Rubin, for our collaborative work on the FAIR description of research products in the Digital Humanities.
+                </p>
+                <p class="mb-4">
+                    I would also like to thank Marcus Pöckelmann and Roberto Rosselli del Turco for their contributions to the collection and description of automatic collation software tools.</p>
+        </article>
+    </div>
+</div>
         </div>
     </main>
 
     <footer class="bg-gray-100 text-gray-600 p-6 border-t">
-        <div class="container mx-auto text-center text-sm">
-            © 2026 - <a href="https://chiaramartignano.github.io/presentation/" target="_blank">Chiara Martignano</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | Built with Airtable and Tailwind CSS
+        <div class="container mx-auto text-center ">
+            © 2026 - <a href="https://chiaramartignano.github.io/presentation/" target="_blank"  class="text-cyan-600">Chiara Martignano</a> | <a  class="text-cyan-600" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | Built with Airtable and Tailwind CSS
         </div>
     </footer>
 
