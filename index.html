@@ -9,62 +9,85 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 font-sans h-screen">
+<body class="flex flex-col min-h-screen bg-gray-50 font-sans">
 
-    <nav class="bg-cyan-800 text-white shadow-lg">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center h-16">
-                <div class="flex shrink-0 items-center">
-                    <img src="./media/DSETools-logo.png" alt="DSETools logo" class="h-14 w-auto" />
-                </div>
-                
-                <div class="font-bold text-xl mr-8">DSETools</div>
+<nav class="bg-cyan-800 text-white shadow-lg" x-data="{ mobileOpen: false }">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
 
-                <ul class="flex space-x-6 items-center">
-                    
-                    <li>
-                        <button onclick="showSection('home')" class="hover:text-blue-200 transition">Home</button>
-                    </li>
-
-                    <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="flex items-center hover:text-blue-200 transition py-4">
-                            Browse the Catalogue
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <ul x-show="open" x-transition class="absolute left-0 w-56 bg-white text-gray-800 rounded-md shadow-xl py-2 z-50">
-                            <li><button onclick="showSection('overview')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Overview</button></li>
-                            <li><button onclick="showSection('list')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Full List</button></li>
-                            <li><button onclick="showSection('editions')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Browse by Digital Edition</button></li>
-                            <li><button onclick="showSection('research-activities')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Browse by Research Activity</button></li>
-                        </ul>
-                    </li>
-
-                    <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="flex items-center hover:text-blue-200 transition py-4">
-                            Contribute
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <ul x-show="open" x-transition class="absolute left-0 w-56 bg-white text-gray-800 rounded-md shadow-xl py-2 z-50">
-                            <li><button onclick="showSection('tool-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Tool</button></li>
-                            <li><button onclick="showSection('edition-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Edition</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <button onclick="showSection('documentation')" class="hover:text-blue-200 transition">Documentation</button>
-                    </li>
-                </ul>
+            <!-- Logo + titolo -->
+            <div class="flex items-center gap-3">
+                <img src="./media/DSETools-logo.png" alt="DSETools logo" class="h-10 md:h-14 w-auto" />
+                <span class="font-bold text-lg md:text-xl">DSETools</span>
             </div>
+
+            <!-- Bottone hamburger (solo mobile) -->
+            <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded hover:bg-cyan-700" aria-label="Menu">
+                <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg x-show="mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <!-- Menu desktop -->
+            <ul class="hidden md:flex space-x-6 items-center">
+                <li><button onclick="showSection('home')" class="hover:text-blue-200 transition">Home</button></li>
+
+                <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center hover:text-blue-200 transition py-4">
+                        Browse the Catalogue
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul x-show="open" x-transition class="absolute left-0 w-56 bg-white text-gray-800 rounded-md shadow-xl py-2 z-50">
+                        <li><button onclick="showSection('overview')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Overview</button></li>
+                        <li><button onclick="showSection('list')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Full List</button></li>
+                        <li><button onclick="showSection('editions')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Browse by Digital Edition</button></li>
+                        <li><button onclick="showSection('research-activities')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Browse by Research Activity</button></li>
+                    </ul>
+                </li>
+
+                <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center hover:text-blue-200 transition py-4">
+                        Contribute
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul x-show="open" x-transition class="absolute left-0 w-56 bg-white text-gray-800 rounded-md shadow-xl py-2 z-50">
+                        <li><button onclick="showSection('tool-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Tool</button></li>
+                        <li><button onclick="showSection('edition-form')" class="block px-4 py-2 w-full text-left hover:bg-blue-50">Add a new Edition</button></li>
+                    </ul>
+                </li>
+
+                <li><button onclick="showSection('documentation')" class="hover:text-blue-200 transition">Documentation</button></li>
+            </ul>
         </div>
-    </nav>
-<main class="flex-grow container mx-auto p-6">
-    <div id="content-area" class="w-full h-full bg-white rounded-xl shadow-md border border-gray-200">
+    </div>
+
+    <!-- Menu mobile -->
+    <div x-show="mobileOpen" x-transition class="md:hidden border-t border-cyan-700 bg-cyan-900"
+         @click="if ($event.target.closest('button[onclick]')) mobileOpen = false">
+        <ul class="px-4 py-2 space-y-1">
+            <li><button onclick="showSection('home')" class="block w-full text-left py-3">Home</button></li>
+
+            <li class="text-xs uppercase tracking-widest text-cyan-300 pt-3">Browse the Catalogue</li>
+            <li><button onclick="showSection('overview')" class="block w-full text-left py-2 pl-3">Overview</button></li>
+            <li><button onclick="showSection('list')" class="block w-full text-left py-2 pl-3">Full List</button></li>
+            <li><button onclick="showSection('editions')" class="block w-full text-left py-2 pl-3">By Digital Edition</button></li>
+            <li><button onclick="showSection('research-activities')" class="block w-full text-left py-2 pl-3">By Research Activity</button></li>
+
+            <li class="text-xs uppercase tracking-widest text-cyan-300 pt-3">Contribute</li>
+            <li><button onclick="showSection('tool-form')" class="block w-full text-left py-2 pl-3">Add a new Tool</button></li>
+            <li><button onclick="showSection('edition-form')" class="block w-full text-left py-2 pl-3">Add a new Edition</button></li>
+
+            <li class="pt-3"><button onclick="showSection('documentation')" class="block w-full text-left py-3">Documentation</button></li>
+        </ul>
+    </div>
+</nav>
+<main class="flex-grow container mx-auto p-2 md:p-6">
+   <div id="content-area" class="w-full h-[calc(100vh-10rem)] min-h-[500px] bg-white rounded-xl shadow-md border border-gray-200">
            
-            <div id="home" class="p-10 section-content h-full overflow-auto">
+            <div id="home" class="p-4 md:p-10 section-content h-full overflow-auto">
                 <div class="max-w-6xl mx-auto px-4 py-8 text-left">
     
     <header class="mb-12">
-        <h1 class="text-3xl font-bold text-gray-900 mb-4">Welcome to DSETools,<br/> the Catalogue of Software Tools for Digital Scholarly Editing!</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Welcome to DSETools,<br/> the Catalogue of Software Tools for Digital Scholarly Editing!</h1>
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -134,7 +157,7 @@
             </section>
         </div>
 
-        <div class="space-y-6">
+        <div class="space-y-6 break-words">
             <div class="bg-cyan-50 p-6 rounded-2xl border border-cyan-100">
                 <h4 class="font-bold text-cyan-900 mb-3">How to cite</h4>
                 <p class="text-cyan-800 leading-relaxed mb-4">
@@ -163,11 +186,11 @@
             <iframe id="overview" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrZHt402No0cuB55?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
             <iframe id="research-activities" class="hidden w-full h-full section-content" src="https://airtable.com/embed/appmd2Z1LsaYMaYEF/shrJCuOkakOkuArYl?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
-        <div id="documentation" class="hidden p-10 section-content h-full overflow-auto">
+        <div id="documentation" class="hidden p-4 md:p-10 section-content h-full overflow-auto">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
         
         <aside class="md:w-1/4">
-            <div class="sticky top-6">
+            <div class="md:sticky md:top-6">
                 <h3 class="text-xs font-bold uppercase text-gray-500 mb-4 tracking-widest">Contents</h3>
                 <ul class="space-y-3 text-gray-700 border-l-2 border-gray-100 pl-4 ">
                     <li><a href="#about" class="hover:text-cyan-600 transition block">About the Project</a></li>
@@ -180,8 +203,8 @@
             </div>
         </aside>
 
-        <article class="md:w-3/4 max-w-none text-gray-800">
-            <h1 class="text-4xl font-bold mb-6 text-gray-900" id="about">Documentation</h1>
+        <article class="md:w-3/4 max-w-none text-gray-800 break-words">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900" id="about">Documentation</h1>
             
             <section class="mb-10">
                 <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">The DSETools Project</h2>
@@ -193,12 +216,12 @@
                     The primary goal is to provide researchers with a structured entry point to discover tools that can be integrated into different stages of an editorial workflow.
                 </p>
                 <p class="leading-relaxed mb-4">
-                    This catalogue was conceived as an appendix to my PhD thesis (<a class="text-cyan-600" target="_blank" href="http://dx.doi.org/10.25434/chiara-martignano_phd2023">http://dx.doi.org/10.25434/chiara-martignano_phd2023</a>),
+                    This catalogue was conceived as an appendix to my PhD thesis (<a class="text-cyan-600 underline underline-offset-2" target="_blank" href="http://dx.doi.org/10.25434/chiara-martignano_phd2023">http://dx.doi.org/10.25434/chiara-martignano_phd2023</a>),
                     and was later published on Zenodo as an Excel spreadsheet.
                     This second version of the catalogue is the result of completely refactoring the data model behind it,
-                    following the research I conducted within the PRIN 2022 ATLAS project (<a class="text-cyan-600" href="https://dh-atlas.github.io/" target="_blank">https://dh-atlas.github.io/</a>).
-                    The second version's data model is compliant with the ATLAS ontology (<a class="text-cyan-600" href="https://dh-atlas.github.io/deliverables/ontology/2.0/index-en" target="_blank">https://dh-atlas.github.io/deliverables/ontology/2.0/index-en</a>)
-                    and enables in-depth description of the software tools according to the FAIR principles (<a class="text-cyan-600" href="https://doi.org/10.1038/sdata.2016.18" target="_blank">https://doi.org/10.1038/sdata.2016.18</a>
+                    following the research I conducted within the PRIN 2022 ATLAS project (<a class="text-cyan-600 underline underline-offset-2" href="https://dh-atlas.github.io/" target="_blank">https://dh-atlas.github.io/</a>).
+                    The second version's data model is compliant with the ATLAS ontology (<a class="text-cyan-600 underline underline-offset-2" href="https://dh-atlas.github.io/deliverables/ontology/2.0/index-en" target="_blank">https://dh-atlas.github.io/deliverables/ontology/2.0/index-en</a>)
+                    and enables in-depth description of the software tools according to the FAIR principles (<a class="text-cyan-600 underline underline-offset-2" href="https://doi.org/10.1038/sdata.2016.18" target="_blank">https://doi.org/10.1038/sdata.2016.18</a>
             </section>
 
             <section class="mb-10" id="structure">
@@ -295,10 +318,10 @@
                 </p>
                 <p class=" text-black-600 mb-4">Feel free to contact me at chiaramartignano[at]gmail[dot]com.</p>
                 <div class="flex gap-4">
-                    <button onclick="showSection('tool-form')" class="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition  font-medium">
+                    <button onclick="showSection('tool-form')" class="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition  font-medium flex flex-col sm:flex-row gap-4">
                         Submit a New Tool
                     </button>
-                    <button onclick="showSection('edition-form')" class="border border-cyan-600 text-cyan-600 px-4 py-2 rounded-lg hover:bg-cyan-50 transition  font-medium">
+                    <button onclick="showSection('edition-form')" class="border border-cyan-600 text-cyan-600 px-4 py-2 rounded-lg hover:bg-cyan-50 transition  font-medium flex flex-col sm:flex-row gap-4">
                         Add a Digital Edition
                     </button>
                 </div>
@@ -307,14 +330,14 @@
             <section class="mb-10" id="references">
                 <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">References</h2>
                 <ul class="space-y-3 list-disc pl-5">
-                    <li>Martignano, Chiara. 2025. “A Catalogue of Software Tools for Digital Scholarly Editing”. <em>Umanistica Digitale</em> 9 (19):1-15. <a class="text-cyan-600" href="https://doi.org/10.6092/issn.2532-8816/21093" target="_blank">https://doi.org/10.6092/issn.2532-8816/21093</a>.</li>
-                    <li>Martignano, Chiara. 2023. ‘On Why and How We Should Build a Catalogue of Software Products for Digital Scholarly Editing’. In <em>Memoria Digitale: Forme Del Testo e Organizzazione Della Conoscenza. Atti Del XII Convegno Annuale AIUCD.</em> (Siena), 130–33. <a class="text-cyan-600" href="https://doi.org/10.6092/unibo%2Famsacta%2F7721" target="_blank">https://doi.org/10.6092/unibo%2Famsacta%2F7721</a>.</li>
-                    <li>Martignano, Chiara, Giorgia Rubin, Sebastiano Giacomini, Alessia Bardi, Marina Buzzoni, Marilena Daquino, Riccardo Del Gratta, Chiara Martignano et al. ‘ATLAS: A Data Model for Describing FAIR Digital Humanities Research Outcomes’. In <em>Diversità, Equità e Inclusione: Sfide e Opportunità per l’Informatica Umanistica Nell’Era Dell’Intelligenza Artificiale.</em> Verona: AIUCD, 2025. <a class="text-cyan-600" href="https://doi.org/10.6092/unibo/amsacta/8380" target="_blank">https://doi.org/10.6092/unibo/amsacta/8380</a>.</li>
-                    <li>Martignano, Chiara, Alessia Bardi, Marina Buzzoni, Marilena Daquino, RICCARDO DEL GRATTA, ANGELO MARIO DEL GROSSO, Franz Fischer, et al. «DH ATLAS: White Book V1.2». Zenodo, 25 febbraio 2025. <a class="text-cyan-600" href="https://doi.org/10.5281/zenodo.14925266" target="_blank">https://doi.org/10.5281/zenodo.14925266</a>.</li>
+                    <li>Martignano, Chiara. 2025. “A Catalogue of Software Tools for Digital Scholarly Editing”. <em>Umanistica Digitale</em> 9 (19):1-15. <a class="text-cyan-600 underline underline-offset-2" href="https://doi.org/10.6092/issn.2532-8816/21093" target="_blank">https://doi.org/10.6092/issn.2532-8816/21093</a>.</li>
+                    <li>Martignano, Chiara. 2023. ‘On Why and How We Should Build a Catalogue of Software Products for Digital Scholarly Editing’. In <em>Memoria Digitale: Forme Del Testo e Organizzazione Della Conoscenza. Atti Del XII Convegno Annuale AIUCD.</em> (Siena), 130–33. <a class="text-cyan-600 underline underline-offset-2" href="https://doi.org/10.6092/unibo%2Famsacta%2F7721" target="_blank">https://doi.org/10.6092/unibo%2Famsacta%2F7721</a>.</li>
+                    <li>Martignano, Chiara, Giorgia Rubin, Sebastiano Giacomini, Alessia Bardi, Marina Buzzoni, Marilena Daquino, Riccardo Del Gratta, Chiara Martignano et al. ‘ATLAS: A Data Model for Describing FAIR Digital Humanities Research Outcomes’. In <em>Diversità, Equità e Inclusione: Sfide e Opportunità per l’Informatica Umanistica Nell’Era Dell’Intelligenza Artificiale.</em> Verona: AIUCD, 2025. <a class="text-cyan-600 underline underline-offset-2" href="https://doi.org/10.6092/unibo/amsacta/8380" target="_blank">https://doi.org/10.6092/unibo/amsacta/8380</a>.</li>
+                    <li>Martignano, Chiara, Alessia Bardi, Marina Buzzoni, Marilena Daquino, RICCARDO DEL GRATTA, ANGELO MARIO DEL GROSSO, Franz Fischer, et al. «DH ATLAS: White Book V1.2». Zenodo, 25 febbraio 2025. <a class="text-cyan-600 underline underline-offset-2" href="https://doi.org/10.5281/zenodo.14925266" target="_blank">https://doi.org/10.5281/zenodo.14925266</a>.</li>
                 </ul>
             </section>
 
-            <section class="mb-10" id="ackowledgements">
+            <section class="mb-10" id="acknowledgements">
                 <h2 class="text-2xl font-semibold mb-4 text-cyan-700 border-b pb-2">Acknowledgements</h2>
                 <p class="mb-4">I would like to thank the ATLAS project team, especially Sebastiano Giacomini and Giorgia Rubin, for our collaborative work on the FAIR description of research products in the Digital Humanities.
                 </p>
@@ -328,7 +351,7 @@
 
     <footer class="bg-gray-100 text-gray-600 p-6 border-t">
         <div class="container mx-auto text-center ">
-            © 2026 - <a href="https://chiaramartignano.github.io/presentation/" target="_blank"  class="text-cyan-600">Chiara Martignano</a> | <a  class="text-cyan-600" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | Built with Airtable and Tailwind CSS
+            © 2026 - <a href="https://chiaramartignano.github.io/presentation/" target="_blank"  class="text-cyan-600 underline underline-offset-2">Chiara Martignano</a> | <a  class="text-cyan-600  underline underline-offset-2" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | Built with Airtable and Tailwind CSS
         </div>
     </footer>
 
